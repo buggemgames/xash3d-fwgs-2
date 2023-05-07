@@ -50,4 +50,9 @@ GNU General Public License for more details.
 #define LIB_WIN32 2
 #define LIB_STATIC 3
 
+// movies (XASH_AVI)
+#define AVI_NULL   0
+#define AVI_WIN32  1
+#define AVI_FFMPEG 2
+
 #endif /* BACKENDS_H */
