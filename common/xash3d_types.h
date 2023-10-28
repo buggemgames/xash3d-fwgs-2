@@ -78,12 +78,13 @@ typedef uint64_t longtime_t;
 
 #if defined(__GNUC__)
 	#ifdef __i386__
-		#define EXPORT __attribute__ ((visibility ("default"),force_align_arg_pointer))
+		#define EXPORT      __attribute__((visibility ("default"),force_align_arg_pointer))
 		#define GAME_EXPORT __attribute((force_align_arg_pointer))
 	#else
 		#define EXPORT __attribute__ ((visibility ("default")))
 		#define GAME_EXPORT
 	#endif
+	#define SYM_EXPORT  __attribute__((visibility("default")))
 	#define _format(x) __attribute__((format(printf, x, x+1)))
 	#define NORETURN __attribute__((noreturn))
 	#define NONNULL __attribute__((nonnull))

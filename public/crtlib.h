@@ -47,60 +47,60 @@ enum
 //
 // build.c
 //
-int Q_buildnum( void );
-int Q_buildnum_date( const char *date );
-int Q_buildnum_compat( void );
-const char *Q_PlatformStringByID( const int platform );
-const char *Q_buildos( void );
-const char *Q_ArchitectureStringByID( const int arch, const uint abi, const int endianness, const qboolean is64 );
-const char *Q_buildarch( void );
-const char *Q_buildcommit( void );
+int EXPORT Q_buildnum( void );
+int EXPORT Q_buildnum_date( const char *date );
+int EXPORT Q_buildnum_compat( void );
+const char EXPORT *Q_PlatformStringByID( const int platform );
+const char EXPORT *Q_buildos( void );
+const char EXPORT *Q_ArchitectureStringByID( const int arch, const uint abi, const int endianness, const qboolean is64 );
+const char EXPORT *Q_buildarch( void );
+const char EXPORT *Q_buildcommit( void );
 
 //
 // crtlib.c
 //
-void Q_strnlwr( const char *in, char *out, size_t size_out );
+void EXPORT Q_strnlwr( const char *in, char *out, size_t size_out );
 #define Q_strlen( str ) (( str ) ? strlen(( str )) : 0 )
-size_t Q_colorstr( const char *string );
-char Q_toupper( const char in );
-char Q_tolower( const char in );
-size_t Q_strncat( char *dst, const char *src, size_t siz );
-qboolean Q_isdigit( const char *str );
-qboolean Q_isspace( const char *str );
-int Q_atoi( const char *str );
-float Q_atof( const char *str );
-void Q_atov( float *vec, const char *str, size_t siz );
+size_t EXPORT Q_colorstr( const char *string );
+char EXPORT Q_toupper( const char in );
+char EXPORT Q_tolower( const char in );
+size_t EXPORT Q_strncat( char *dst, const char *src, size_t siz );
+qboolean EXPORT Q_isdigit( const char *str );
+qboolean EXPORT Q_isspace( const char *str );
+int EXPORT Q_atoi( const char *str );
+float EXPORT Q_atof( const char *str );
+void EXPORT Q_atov( float *vec, const char *str, size_t siz );
 #define Q_strchr  strchr
 #define Q_strrchr strrchr
-qboolean Q_stricmpext( const char *pattern, const char *text );
-qboolean Q_strnicmpext( const char *pattern, const char *text, size_t minimumlen );
-const byte *Q_memmem( const byte *haystack, size_t haystacklen, const byte *needle, size_t needlelen );
-const char *Q_timestamp( int format );
-int Q_vsnprintf( char *buffer, size_t buffersize, const char *format, va_list args );
-int Q_snprintf( char *buffer, size_t buffersize, const char *format, ... ) _format( 3 );
+qboolean EXPORT Q_stricmpext( const char *pattern, const char *text );
+qboolean EXPORT Q_strnicmpext( const char *pattern, const char *text, size_t minimumlen );
+const byte EXPORT *Q_memmem( const byte *haystack, size_t haystacklen, const byte *needle, size_t needlelen );
+const char EXPORT *Q_timestamp( int format );
+int EXPORT Q_vsnprintf( char *buffer, size_t buffersize, const char *format, va_list args );
+int EXPORT Q_snprintf( char *buffer, size_t buffersize, const char *format, ... ) _format( 3 );
 #define Q_strpbrk strpbrk
-void COM_StripColors( const char *in, char *out );
+void EXPORT COM_StripColors( const char *in, char *out );
 #define Q_memprint( val ) Q_pretifymem( val, 2 )
-char *Q_pretifymem( float value, int digitsafterdecimal );
-void COM_FileBase( const char *in, char *out, size_t size );
-const char *COM_FileExtension( const char *in );
-void COM_DefaultExtension( char *path, const char *extension, size_t size );
-void COM_ReplaceExtension( char *path, const char *extension, size_t size );
-void COM_ExtractFilePath( const char *path, char *dest );
-const char *COM_FileWithoutPath( const char *in );
-void COM_StripExtension( char *path );
-void COM_RemoveLineFeed( char *str );
-void COM_FixSlashes( char *pname );
-void COM_PathSlashFix( char *path );
-char COM_Hex2Char( uint8_t hex );
-void COM_Hex2String( uint8_t hex, char *str );
+char EXPORT *Q_pretifymem( float value, int digitsafterdecimal );
+void EXPORT COM_FileBase( const char *in, char *out, size_t size );
+const char EXPORT *COM_FileExtension( const char *in );
+void EXPORT COM_DefaultExtension( char *path, const char *extension, size_t size );
+void EXPORT COM_ReplaceExtension( char *path, const char *extension, size_t size );
+void EXPORT COM_ExtractFilePath( const char *path, char *dest );
+const char EXPORT *COM_FileWithoutPath( const char *in );
+void EXPORT COM_StripExtension( char *path );
+void EXPORT COM_RemoveLineFeed( char *str );
+void EXPORT COM_FixSlashes( char *pname );
+void EXPORT COM_PathSlashFix( char *path );
+char EXPORT COM_Hex2Char( uint8_t hex );
+void EXPORT COM_Hex2String( uint8_t hex, char *str );
 // return 0 on empty or null string, 1 otherwise
 #define COM_CheckString( string ) ( ( !string || !*string ) ? 0 : 1 )
 #define COM_CheckStringEmpty( string ) ( ( !*string ) ? 0 : 1 )
-char *COM_ParseFileSafe( char *data, char *token, const int size, unsigned int flags, int *len, qboolean *quoted );
+char EXPORT *COM_ParseFileSafe( char *data, char *token, const int size, unsigned int flags, int *len, qboolean *quoted );
 #define COM_ParseFile( data, token, size ) COM_ParseFileSafe( data, token, size, 0, NULL, NULL )
-int matchpattern( const char *in, const char *pattern, qboolean caseinsensitive );
-int matchpattern_with_separator( const char *in, const char *pattern, qboolean caseinsensitive, const char *separators, qboolean wildcard_least_one );
+int EXPORT matchpattern( const char *in, const char *pattern, qboolean caseinsensitive );
+int EXPORT matchpattern_with_separator( const char *in, const char *pattern, qboolean caseinsensitive, const char *separators, qboolean wildcard_least_one );
 
 // libc implementations
 static inline int Q_strcmp( const char *s1, const char *s2 )

@@ -179,33 +179,33 @@ static inline void SinCos( float radians, float *sine, float *cosine )
 	*cosine = cos(radians);
 }
 
-float rsqrt( float number );
-float anglemod( float a );
-word FloatToHalf( float v );
-float HalfToFloat( word h );
-void RoundUpHullSize( vec3_t size );
-int SignbitsForPlane( const vec3_t normal );
-int PlaneTypeForNormal( const vec3_t normal );
-int NearestPOW( int value, qboolean roundDown );
-float VectorNormalizeLength2( const vec3_t v, vec3_t out );
-qboolean VectorCompareEpsilon( const vec3_t vec1, const vec3_t vec2, vec_t epsilon );
-void VectorVectors( const vec3_t forward, vec3_t right, vec3_t up );
-void VectorAngles( const float *forward, float *angles );
-void AngleVectors( const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up );
-void VectorsAngles( const vec3_t forward, const vec3_t right, const vec3_t up, vec3_t angles );
-void PlaneIntersect( const struct mplane_s *plane, const vec3_t p0, const vec3_t p1, vec3_t out );
+float EXPORT rsqrt( float number );
+float EXPORT anglemod( float a );
+word EXPORT FloatToHalf( float v );
+float EXPORT HalfToFloat( word h );
+void EXPORT RoundUpHullSize( vec3_t size );
+int EXPORT SignbitsForPlane( const vec3_t normal );
+int EXPORT PlaneTypeForNormal( const vec3_t normal );
+int EXPORT NearestPOW( int value, qboolean roundDown );
+float EXPORT VectorNormalizeLength2( const vec3_t v, vec3_t out );
+qboolean EXPORT VectorCompareEpsilon( const vec3_t vec1, const vec3_t vec2, vec_t epsilon );
+void EXPORT VectorVectors( const vec3_t forward, vec3_t right, vec3_t up );
+void EXPORT VectorAngles( const float *forward, float *angles );
+void EXPORT AngleVectors( const vec3_t angles, vec3_t forward, vec3_t right, vec3_t up );
+void EXPORT VectorsAngles( const vec3_t forward, const vec3_t right, const vec3_t up, vec3_t angles );
+void EXPORT PlaneIntersect( const struct mplane_s *plane, const vec3_t p0, const vec3_t p1, vec3_t out );
 
-void ClearBounds( vec3_t mins, vec3_t maxs );
-void AddPointToBounds( const vec3_t v, vec3_t mins, vec3_t maxs );
-qboolean BoundsIntersect( const vec3_t mins1, const vec3_t maxs1, const vec3_t mins2, const vec3_t maxs2 );
-qboolean BoundsAndSphereIntersect( const vec3_t mins, const vec3_t maxs, const vec3_t origin, float radius );
-qboolean SphereIntersect( const vec3_t vSphereCenter, float fSphereRadiusSquared, const vec3_t vLinePt, const vec3_t vLineDir );
-float RadiusFromBounds( const vec3_t mins, const vec3_t maxs );
-void ExpandBounds( vec3_t mins, vec3_t maxs, float offset );
+void EXPORT ClearBounds( vec3_t mins, vec3_t maxs );
+void EXPORT AddPointToBounds( const vec3_t v, vec3_t mins, vec3_t maxs );
+qboolean EXPORT BoundsIntersect( const vec3_t mins1, const vec3_t maxs1, const vec3_t mins2, const vec3_t maxs2 );
+qboolean EXPORT BoundsAndSphereIntersect( const vec3_t mins, const vec3_t maxs, const vec3_t origin, float radius );
+qboolean EXPORT SphereIntersect( const vec3_t vSphereCenter, float fSphereRadiusSquared, const vec3_t vLinePt, const vec3_t vLineDir );
+float EXPORT RadiusFromBounds( const vec3_t mins, const vec3_t maxs );
+void EXPORT ExpandBounds( vec3_t mins, vec3_t maxs, float offset );
 
-void AngleQuaternion( const vec3_t angles, vec4_t q, qboolean studio );
-void QuaternionAngle( const vec4_t q, vec3_t angles );
-void QuaternionSlerp( const vec4_t p, const vec4_t q, float t, vec4_t qt );
+void EXPORT AngleQuaternion( const vec3_t angles, vec4_t q, qboolean studio );
+void EXPORT QuaternionAngle( const vec4_t q, vec3_t angles );
+void EXPORT QuaternionSlerp( const vec4_t p, const vec4_t q, float t, vec4_t qt );
 
 //
 // matrixlib.c
@@ -227,35 +227,35 @@ static inline void Matrix3x4_OriginFromMatrix( const matrix3x4 in, float *out )
 	out[2] = in[2][3];
 }
 
-void Matrix3x4_VectorTransform( const matrix3x4 in, const float v[3], float out[3] );
-void Matrix3x4_VectorITransform( const matrix3x4 in, const float v[3], float out[3] );
-void Matrix3x4_VectorRotate( const matrix3x4 in, const float v[3], float out[3] );
-void Matrix3x4_VectorIRotate( const matrix3x4 in, const float v[3], float out[3] );
-void Matrix3x4_ConcatTransforms( matrix3x4 out, const matrix3x4 in1, const matrix3x4 in2 );
-void Matrix3x4_FromOriginQuat( matrix3x4 out, const vec4_t quaternion, const vec3_t origin );
-void Matrix3x4_CreateFromEntity( matrix3x4 out, const vec3_t angles, const vec3_t origin, float scale );
-void Matrix3x4_TransformAABB( const matrix3x4 world, const vec3_t mins, const vec3_t maxs, vec3_t absmin, vec3_t absmax );
-void Matrix3x4_AnglesFromMatrix( const matrix3x4 in, vec3_t out );
+void EXPORT Matrix3x4_VectorTransform( const matrix3x4 in, const float v[3], float out[3] );
+void EXPORT Matrix3x4_VectorITransform( const matrix3x4 in, const float v[3], float out[3] );
+void EXPORT Matrix3x4_VectorRotate( const matrix3x4 in, const float v[3], float out[3] );
+void EXPORT Matrix3x4_VectorIRotate( const matrix3x4 in, const float v[3], float out[3] );
+void EXPORT Matrix3x4_ConcatTransforms( matrix3x4 out, const matrix3x4 in1, const matrix3x4 in2 );
+void EXPORT Matrix3x4_FromOriginQuat( matrix3x4 out, const vec4_t quaternion, const vec3_t origin );
+void EXPORT Matrix3x4_CreateFromEntity( matrix3x4 out, const vec3_t angles, const vec3_t origin, float scale );
+void EXPORT Matrix3x4_TransformAABB( const matrix3x4 world, const vec3_t mins, const vec3_t maxs, vec3_t absmin, vec3_t absmax );
+void EXPORT Matrix3x4_AnglesFromMatrix( const matrix3x4 in, vec3_t out );
 
 #define Matrix4x4_LoadIdentity( mat )	Matrix4x4_Copy( mat, m_matrix4x4_identity )
 #define Matrix4x4_Copy( out, in )	memcpy( out, in, sizeof( matrix4x4 ))
 
-void Matrix4x4_VectorTransform( const matrix4x4 in, const float v[3], float out[3] );
-void Matrix4x4_VectorITransform( const matrix4x4 in, const float v[3], float out[3] );
-void Matrix4x4_VectorRotate( const matrix4x4 in, const float v[3], float out[3] );
-void Matrix4x4_VectorIRotate( const matrix4x4 in, const float v[3], float out[3] );
-void Matrix4x4_ConcatTransforms( matrix4x4 out, const matrix4x4 in1, const matrix4x4 in2 );
-void Matrix4x4_CreateFromEntity( matrix4x4 out, const vec3_t angles, const vec3_t origin, float scale );
-void Matrix4x4_TransformPositivePlane( const matrix4x4 in, const vec3_t normal, float d, vec3_t out, float *dist );
-void Matrix4x4_ConvertToEntity( const matrix4x4 in, vec3_t angles, vec3_t origin );
-void Matrix4x4_Invert_Simple( matrix4x4 out, const matrix4x4 in1 );
-qboolean Matrix4x4_Invert_Full( matrix4x4 out, const matrix4x4 in1 );
+void EXPORT Matrix4x4_VectorTransform( const matrix4x4 in, const float v[3], float out[3] );
+void EXPORT Matrix4x4_VectorITransform( const matrix4x4 in, const float v[3], float out[3] );
+void EXPORT Matrix4x4_VectorRotate( const matrix4x4 in, const float v[3], float out[3] );
+void EXPORT Matrix4x4_VectorIRotate( const matrix4x4 in, const float v[3], float out[3] );
+void EXPORT Matrix4x4_ConcatTransforms( matrix4x4 out, const matrix4x4 in1, const matrix4x4 in2 );
+void EXPORT Matrix4x4_CreateFromEntity( matrix4x4 out, const vec3_t angles, const vec3_t origin, float scale );
+void EXPORT Matrix4x4_TransformPositivePlane( const matrix4x4 in, const vec3_t normal, float d, vec3_t out, float *dist );
+void EXPORT Matrix4x4_ConvertToEntity( const matrix4x4 in, vec3_t angles, vec3_t origin );
+void EXPORT Matrix4x4_Invert_Simple( matrix4x4 out, const matrix4x4 in1 );
+qboolean EXPORT Matrix4x4_Invert_Full( matrix4x4 out, const matrix4x4 in1 );
 
-void R_StudioSlerpBones( int numbones, vec4_t q1[], float pos1[][3], const vec4_t q2[], const float pos2[][3], float s );
-void R_StudioCalcBoneQuaternion( int frame, float s, const mstudiobone_t *pbone, const mstudioanim_t *panim, const float *adj, vec4_t q );
-void R_StudioCalcBonePosition( int frame, float s, const mstudiobone_t *pbone, const mstudioanim_t *panim, const vec3_t adj, vec3_t pos );
+void EXPORT R_StudioSlerpBones( int numbones, vec4_t q1[], float pos1[][3], const vec4_t q2[], const float pos2[][3], float s );
+void EXPORT R_StudioCalcBoneQuaternion( int frame, float s, const mstudiobone_t *pbone, const mstudioanim_t *panim, const float *adj, vec4_t q );
+void EXPORT R_StudioCalcBonePosition( int frame, float s, const mstudiobone_t *pbone, const mstudioanim_t *panim, const vec3_t adj, vec3_t pos );
 
-int BoxOnPlaneSide( const vec3_t emins, const vec3_t emaxs, const mplane_t *p );
+int EXPORT BoxOnPlaneSide( const vec3_t emins, const vec3_t emaxs, const mplane_t *p );
 #define BOX_ON_PLANE_SIDE( emins, emaxs, p )			\
 	((( p )->type < 3 ) ?				\
 	(						\
@@ -272,11 +272,11 @@ int BoxOnPlaneSide( const vec3_t emins, const vec3_t emaxs, const mplane_t *p );
 	:						\
 		BoxOnPlaneSide(( emins ), ( emaxs ), ( p )))
 
-extern vec3_t		vec3_origin;
-extern int		boxpnt[6][4];
-extern const matrix3x4	m_matrix3x4_identity;
-extern const matrix4x4	m_matrix4x4_identity;
-extern const float		m_bytenormals[NUMVERTEXNORMALS][3];
+extern vec3_t SYM_EXPORT vec3_origin;
+extern int    SYM_EXPORT boxpnt[6][4];
+extern const matrix3x4 SYM_EXPORT m_matrix3x4_identity;
+extern const matrix4x4 SYM_EXPORT m_matrix4x4_identity;
+extern const float     SYM_EXPORT m_bytenormals[NUMVERTEXNORMALS][3];
 
 #endif // XASH3D_MATHLIB_H
 
