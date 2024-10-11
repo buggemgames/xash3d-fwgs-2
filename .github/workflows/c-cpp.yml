@@ -37,7 +37,7 @@ jobs:
       with:
         submodules: recursive
     - name: Install dependencies
-      run: bash scripts/gha/deps_${{ matrix.targetos }}.sh
+      run: bash scripts/gha/deps_linux.sh
     - name: Build engine
       
       run: export PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" |
