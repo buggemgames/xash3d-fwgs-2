@@ -22,11 +22,10 @@ jobs:
       SDL_VERSION: 2.30.3
       GH_CPU_ARCH: ${{ matrix.targetarch }}
     steps:
-    - name: Setup emsdk
-      uses: mymindstorm/setup-emsdk@v14
+    - uses: mymindstorm/setup-emsdk@v14
       with:
         # Make sure to set a version number!
-        version: 1.38.40
+        version: 1.38.45
         # This is the name of the cache folder.
         # The cache folder will be placed in the build directory,
         #  so make sure it doesn't conflict with anything!
