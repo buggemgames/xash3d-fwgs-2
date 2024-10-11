@@ -37,7 +37,7 @@ jobs:
       
       run: |
         export PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig"
-        emconfigure "./waf configure --prefix=./build"
+        emconfigure "./waf" configure
         emmake ./waf
     - name: Upload engine (artifacts)
       uses: actions/upload-artifact@v4
