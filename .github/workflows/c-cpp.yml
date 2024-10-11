@@ -16,43 +16,22 @@ jobs:
           # Linux build specifically want oldest Ubuntu as possible
           # to be crossdistribution compatible, otherwise use ubuntu-latest
           - os: ubuntu-20.04
-            targetos: linux
-            targetarch: amd64
-          - os: ubuntu-20.04
-            targetos: linux
+            targetos: emscripten
             targetarch: i386
-#          - os: ubuntu-aarch64-20.04
-#            targetos: linux
-#            targetarch: aarch64
-          - os: ubuntu-20.04
-            targetos: android
-            targetarch: multiarch
-#          - os: ubuntu-20.04
-#            targetos: motomagx
-#            targetarch: armv6
-
-          - os: ubuntu-latest
-            targetos: nswitch
-            targetarch: arm64
-          - os: ubuntu-latest
-            targetos: psvita
-            targetarch: armv7hf
-          - os: windows-latest
-            targetos: win32
-            targetarch: amd64
-          - os: windows-2019 # always use the oldest possible for 32-bit because of older compilers, and better support of certain legacy OSes
-            targetos: win32
-            targetarch: i386
-          - os: macos-14 # in GitHub documentation, it's an ARM64 machine
-            targetos: apple
-            targetarch: arm64
-          - os: macos-12 # in GitHub documentation, it's an x86 machine
-            targetos: apple
-            targetarch: amd64
     env:
       SDL_VERSION: 2.30.3
       GH_CPU_ARCH: ${{ matrix.targetarch }}
     steps:
+    - name: Setup emsdk
+      uses: mymindstorm/setup-emsdk@v14
+      with:
+        # Make sure to set a version number!
+        version: 1.38.40
+        # This is the name of the cache folder.
+        # The cache folder will be placed in the build directory,
+        #  so make sure it doesn't conflict with anything!
+        actions-cache-folder: 'emsdk-cache'
+      
     - name: Checkout
       uses: actions/checkout@v4
       with:
@@ -60,14 +39,15 @@ jobs:
     - name: Install dependencies
       run: bash scripts/gha/deps_${{ matrix.targetos }}.sh
     - name: Build engine
-      env:
-        FWGS_PFX_PASSWORD: ${{ secrets.FWGS_PFX_PASSWORD }}
-      run: bash scripts/gha/build_${{ matrix.targetos }}.sh
+      
+      run: export PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" |
+           emconfigure sh -c "./waf configure --prefix=./build" |
+           emmake ./waf
     - name: Upload engine (artifacts)
       uses: actions/upload-artifact@v4
       with:
         name: artifact-${{ matrix.targetos }}-${{ matrix.targetarch }}
-        path: artifacts/*
+        path: build/*
   flatpak:
     runs-on: ubuntu-latest
     strategy:
