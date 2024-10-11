@@ -39,9 +39,10 @@ jobs:
       run: bash scripts/gha/deps_linux.sh
     - name: Build engine
       
-      run: export PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig" |
-           emconfigure sh -c "./waf configure --prefix=./build" |
-           emmake ./waf
+      run: |
+        export PKG_CONFIG_PATH="/usr/lib/i386-linux-gnu/pkgconfig"
+        emconfigure sh -c "./waf configure --prefix=./build"
+        emmake ./waf
     - name: Upload engine (artifacts)
       uses: actions/upload-artifact@v4
       with:
