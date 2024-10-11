@@ -26,10 +26,6 @@ jobs:
       with:
         # Make sure to set a version number!
         version: 1.38.45
-        # This is the name of the cache folder.
-        # The cache folder will be placed in the build directory,
-        #  so make sure it doesn't conflict with anything!
-        actions-cache-folder: 'emsdk-cache'
       
     - name: Checkout
       uses: actions/checkout@v4
